@@ -9,7 +9,7 @@
  * - Creating and managing tables
  * - Adding, updating, and querying records
  */
-
+import { fileURLToPath } from 'url';
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
@@ -25,17 +25,11 @@ import * as dotenv from "dotenv";
 import * as path from "path";
 import * as fs from "fs";
 
-// Carregar variáveis de ambiente do arquivo .env
-const envPath = path.resolve(__dirname, '.env');
-if (fs.existsSync(envPath)) {
-  console.error(`Carregando variáveis de ambiente do arquivo: ${envPath}`);
-  dotenv.config({ path: envPath });
-} else {
-  console.error(`Arquivo .env não encontrado em: ${envPath}`);
-  console.error('Usando variáveis de ambiente do sistema ou valores padrão');
-  dotenv.config();
-}
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+// Carregar variáveis de ambiente do arquivo .env
+dotenv.config();
 // NocoDB configuration - Lendo do arquivo .env
 const NOCODB_URL = process.env.NOCODB_URL || "http://localhost:8080";
 const NOCODB_AUTH_TOKEN = process.env.NOCODB_AUTH_TOKEN;
