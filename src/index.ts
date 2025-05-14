@@ -24,7 +24,11 @@ import axios from "axios";
 import * as dotenv from "dotenv";
 import * as path from "path";
 import * as fs from "fs";
+import express from "express"
 
+
+
+// Importar o arquivo de configuração do dotenv
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,6 +39,12 @@ const NOCODB_URL = process.env.NOCODB_URL || "http://localhost:8080";
 const NOCODB_AUTH_TOKEN = process.env.NOCODB_AUTH_TOKEN;
 const NOCODB_BASE_ID = process.env.NOCODB_BASE_ID;
 const API_VERSION = process.env.API_VERSION || "v2";
+const PORT = process.env.PORT || 3000;
+
+const app = express();
+app.listen(PORT, () => {
+  console.log(`MCP rodando em http://localhost:${PORT}`);
+});
 
 // Log de configuração
 console.error("Configuração do servidor NocoDB MCP:");
@@ -774,3 +784,5 @@ export class NocoDBServer {
 // Create and run the server
 const server = new NocoDBServer();
 server.run().catch(console.error);
+
+
