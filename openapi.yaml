@@ -1,0 +1,133 @@
+openapi: 3.0.1
+info:
+  title: NocoDB MCP
+  version: "1.0"
+servers:
+  - url: https://projetonocodb.onrender.com/
+
+paths:
+  /tools/list_projects:
+    post:
+      summary: Lista todos os projetos do NocoDB
+      operationId: listProjects
+      responses:
+        '200':
+          description: Lista de projetos
+
+  /tools/list_tables:
+    post:
+      summary: Lista todas as tabelas de um projeto
+      operationId: listTables
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                projectId:
+                  type: string
+              required:
+                - projectId
+      responses:
+        '200':
+          description: Lista de tabelas
+
+  /tools/query_table_by_name:
+    post:
+      summary: Consulta registros diretamente por nome da tabela
+      operationId: queryTableByName
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tableName:
+                  type: string
+                limit:
+                  type: number
+              required:
+                - tableName
+      responses:
+        '200':
+          description: Registros da tabela
+
+  /tools/insert_record:
+    post:
+      summary: Insere um novo registro em uma tabela
+      operationId: insertRecord
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                projectId:
+                  type: string
+                tableName:
+                  type: string
+                data:
+                  type: object
+              required:
+                - projectId
+                - tableName
+                - data
+      responses:
+        '200':
+          description: Registro inserido
+
+  /tools/update_record:
+    post:
+      summary: Atualiza um registro existente
+      operationId: updateRecord
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                projectId:
+                  type: string
+                tableName:
+                  type: string
+                recordId:
+                  type: string
+                data:
+                  type: object
+              required:
+                - projectId
+                - tableName
+                - recordId
+                - data
+      responses:
+        '200':
+          description: Registro atualizado
+
+  /tools/delete_record:
+    post:
+      summary: Remove um registro existente
+      operationId: deleteRecord
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                projectId:
+                  type: string
+                tableName:
+                  type: string
+                recordId:
+                  type: string
+              required:
+                - projectId
+                - tableName
+                - recordId
+      responses:
+        '200':
+          description: Registro deletado

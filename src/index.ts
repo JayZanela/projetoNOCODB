@@ -42,9 +42,24 @@ const API_VERSION = process.env.API_VERSION || "v2";
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+
+app.get("/openapi.yaml", (req, res) => {
+  res.sendFile(path.resolve("openapi.yaml"));
+});
+
+app.get("/openai-tool-manifest.json", (req, res) => {
+  res.sendFile(path.resolve("openai-tool-manifest.json"));
+});
+
+
+
+
+
 app.listen(PORT, () => {
   console.log(`MCP rodando em http://localhost:${PORT}`);
 });
+
+
 
 // Log de configuração
 console.error("Configuração do servidor NocoDB MCP:");
