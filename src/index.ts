@@ -26,7 +26,7 @@ import * as path from "path";
 import * as fs from "fs";
 
 // Carregar variáveis de ambiente do arquivo .env
-const envPath = path.resolve(process.cwd(), '.env');
+const envPath = path.resolve(__dirname, '.env');
 if (fs.existsSync(envPath)) {
   console.error(`Carregando variáveis de ambiente do arquivo: ${envPath}`);
   dotenv.config({ path: envPath });
