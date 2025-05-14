@@ -52,7 +52,9 @@ app.get("/openai-tool-manifest.json", (req, res) => {
 });
 
 
-
+app.get("/openai-tool-manifest.json", (req, res) => {
+  res.sendFile(path.resolve("openai-tool-manifest.json"));
+});
 
 
 app.listen(PORT, () => {

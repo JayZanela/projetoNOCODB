@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "NocoDB MCP",
+  "name_for_model": "nocodb_mcp",
+  "description_for_human": "Gerencie dados do NocoDB com comandos em linguagem natural.",
+  "description_for_model": "Use esta ferramenta para consultar, listar, inserir, atualizar e deletar registros no NocoDB.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://projetonocodb.onrender.com/openapi.yaml",
+    "has_user_authentication": false
+  },
+  "logo_url": "https://raw.githubusercontent.com/github/explore/main/topics/database/database.png",
+  "contact_email": "suporte@nextelectric.com.br",
+  "legal_info_url": "https://nextelectric.com.br/termos"
+}
